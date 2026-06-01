@@ -1,0 +1,160 @@
+<UserControl x:Class="ScreenTimeTracker.Views.Pages.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:converters="clr-namespace:ScreenTimeTracker.Views.Converters">
+
+    <UserControl.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="32,24,32,32">
+            <TextBlock Text="设置"
+                       Style="{StaticResource Title1}"
+                       Margin="0,0,0,24" />
+
+            <!-- 通用 -->
+            <Border Background="{StaticResource CardBackground}"
+                    CornerRadius="12"
+                    Effect="{StaticResource CardShadow}"
+                    Padding="24"
+                    Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="通用"
+                               Style="{StaticResource Title3}"
+                               Margin="0,0,0,16" />
+
+                    <Grid Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="开机自启"
+                                       Style="{StaticResource Headline}" />
+                            <TextBlock Text="登录时自动启动屏幕时间管家"
+                                       Style="{StaticResource Caption1}" />
+                        </StackPanel>
+                        <CheckBox Grid.Column="1"
+                                  IsChecked="{Binding LaunchAtStartup}"
+                                  Style="{StaticResource AppleToggleButton}"
+                                  VerticalAlignment="Center" />
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="隐藏到系统托盘"
+                                       Style="{StaticResource Headline}" />
+                            <TextBlock Text="关闭窗口时继续在后台运行"
+                                       Style="{StaticResource Caption1}" />
+                        </StackPanel>
+                        <CheckBox Grid.Column="1"
+                                  IsChecked="{Binding MinimizeToTray}"
+                                  Style="{StaticResource AppleToggleButton}"
+                                  VerticalAlignment="Center" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- 通知 -->
+            <Border Background="{StaticResource CardBackground}"
+                    CornerRadius="12"
+                    Effect="{StaticResource CardShadow}"
+                    Padding="24"
+                    Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="通知"
+                               Style="{StaticResource Title3}"
+                               Margin="0,0,0,16" />
+
+                    <Grid Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="启用通知"
+                                       Style="{StaticResource Headline}" />
+                            <TextBlock Text="超出时间限制时显示提醒"
+                                       Style="{StaticResource Caption1}" />
+                        </StackPanel>
+                        <CheckBox Grid.Column="1"
+                                  IsChecked="{Binding NotificationsEnabled}"
+                                  Style="{StaticResource AppleToggleButton}"
+                                  VerticalAlignment="Center" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- 数据 -->
+            <Border Background="{StaticResource CardBackground}"
+                    CornerRadius="12"
+                    Effect="{StaticResource CardShadow}"
+                    Padding="24"
+                    Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="数据"
+                               Style="{StaticResource Title3}"
+                               Margin="0,0,0,16" />
+
+                    <Grid Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="数据库"
+                                       Style="{StaticResource Headline}" />
+                            <TextBlock Text="{Binding DbSizeFormatted}"
+                                       Style="{StaticResource Caption1}" />
+                            <TextBlock Text="{Binding DbPath}"
+                                       Style="{StaticResource Caption2}"
+                                       TextTrimming="CharacterEllipsis"
+                                       MaxWidth="400" />
+                        </StackPanel>
+                    </Grid>
+
+                    <Button Content="导出数据"
+                            Command="{Binding ExportDataCommand}"
+                            Style="{StaticResource AppleSecondaryButton}"
+                            HorizontalAlignment="Left"
+                            Width="140"
+                            Margin="0,0,0,12" />
+
+                    <Button Content="清除所有数据"
+                            Command="{Binding ClearDataCommand}"
+                            Style="{StaticResource AppleDangerButton}"
+                            HorizontalAlignment="Left"
+                            Width="140" />
+                </StackPanel>
+            </Border>
+
+            <!-- 关于 -->
+            <Border Background="{StaticResource CardBackground}"
+                    CornerRadius="12"
+                    Effect="{StaticResource CardShadow}"
+                    Padding="24">
+                <StackPanel>
+                    <TextBlock Text="关于"
+                               Style="{StaticResource Title3}"
+                               Margin="0,0,0,16" />
+
+                    <TextBlock Text="屏幕时间管家"
+                               Style="{StaticResource Headline}" />
+                    <TextBlock Text="{Binding VersionInfo}"
+                               Style="{StaticResource Caption1}" />
+                    <TextBlock Text="追踪你的数字生活，找到平衡。"
+                               Style="{StaticResource BodySecondary}"
+                               Margin="0,8,0,0" />
+                </StackPanel>
+            </Border>
+
+            <Border Height="32" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

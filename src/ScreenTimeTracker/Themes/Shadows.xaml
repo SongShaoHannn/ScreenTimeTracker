@@ -1,0 +1,36 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Card shadow: soft, light -->
+    <DropShadowEffect x:Key="CardShadow"
+                      BlurRadius="20"
+                      Opacity="0.08"
+                      ShadowDepth="2"
+                      Direction="270"
+                      Color="#000000" />
+
+    <!-- Elevated shadow: menus, dialogs -->
+    <DropShadowEffect x:Key="ElevatedShadow"
+                      BlurRadius="30"
+                      Opacity="0.12"
+                      ShadowDepth="4"
+                      Direction="270"
+                      Color="#000000" />
+
+    <!-- Subtle shadow: small elements -->
+    <DropShadowEffect x:Key="SubtleShadow"
+                      BlurRadius="10"
+                      Opacity="0.06"
+                      ShadowDepth="1"
+                      Direction="270"
+                      Color="#000000" />
+
+    <!-- Button shadow -->
+    <DropShadowEffect x:Key="ButtonShadow"
+                      BlurRadius="8"
+                      Opacity="0.10"
+                      ShadowDepth="1"
+                      Direction="270"
+                      Color="#007AFF" />
+
+</ResourceDictionary>

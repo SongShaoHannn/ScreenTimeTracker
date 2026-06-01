@@ -1,0 +1,49 @@
+<Window x:Class="ScreenTimeTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:ScreenTimeTracker.ViewModels"
+        xmlns:pages="clr-namespace:ScreenTimeTracker.Views.Pages"
+        xmlns:controls="clr-namespace:ScreenTimeTracker.Views.Controls"
+        Title="屏幕时间管家"
+        Icon="Resources/tray-icon.ico"
+        Height="680" Width="960"
+        MinHeight="500" MinWidth="780"
+        WindowStyle="SingleBorderWindow"
+        Background="{StaticResource WindowBackground}"
+        WindowStartupLocation="CenterScreen"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType">
+
+    <Window.Resources>
+        <!-- DataTemplate for ViewModel-based page switching -->
+        <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+            <pages:DashboardPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AppDetailViewModel}">
+            <pages:AppDetailPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+            <pages:SettingsPage />
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0"
+                Background="{StaticResource SidebarBackground}">
+            <controls:SidebarNav />
+        </Border>
+
+        <!-- Content Area -->
+        <Grid Grid.Column="1">
+            <!-- Page Content -->
+            <ContentControl Content="{Binding CurrentPage}" />
+        </Grid>
+    </Grid>
+</Window>
